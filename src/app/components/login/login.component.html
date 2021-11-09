@@ -1,1 +1,37 @@
 <p>login works!</p>
+<div>
+  <form [formGroup]="formLogin" (ngSubmit)="onLogin()">
+    <div>
+      <label>Email</label>
+      <input type="email" formControlName="email">
+    </div>
+
+    <div *ngIf="formLogin.get('email')?.errors && formLogin.get('email')?.touched">
+      <small *ngIf="formLogin.get('email')?.errors?.required">
+        Email is required.
+      </small>
+      <small *ngIf="formLogin.get('email')?.errors?.email">
+        Please enter correct email address.
+      </small>
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" formControlName="password">
+    </div>
+
+    <div *ngIf="formLogin.get('password')?.errors && formLogin.get('password')?.touched">
+      <small *ngIf="formLogin.get('password')?.errors?.required">
+        Password is required.
+      </small>
+      <small *ngIf="formLogin.get('password')?.errors?.minlength">
+        Incorrect password length. Need {{formLogin.get('password')?.errors?.minlength?.requiredLength}},
+         actual length is {{formLogin.get('password')?.errors?.minlength?.actualLength}}
+      </small>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="formLogin.invalid">Login</button>
+    </div>
+  </form>
+</div>

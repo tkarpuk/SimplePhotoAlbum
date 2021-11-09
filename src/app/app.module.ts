@@ -8,6 +8,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AlbumComponent } from './components/album/album.component';
 import { PhotoComponent } from './components/photo/photo.component';
 import { PhotoEditComponent } from './components/photo-edit/photo-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { PhotoEditComponent } from './components/photo-edit/photo-edit.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
