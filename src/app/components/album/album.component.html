@@ -1,1 +1,9 @@
 <p>album works!</p>
+<div>
+  <h3>Album: {{ album.caption | uppercase }}</h3>
+  <p>Description: {{ album.description }}</p>
+</div>
+
+<div *ngFor="let photo of photos">
+  <app-photo [photoId]="photo.id"></app-photo>
+</div>
