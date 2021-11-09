@@ -1,1 +1,41 @@
 <p>photo-edit works!</p>
+<div>
+  <form [formGroup]="formPhoto" (ngSubmit)="submitPhoto()">
+    <div>
+      <label>Caption</label>
+      <input type="text" formControlName="caption">
+    </div>
+
+    <div *ngIf="formPhoto.get('caption')?.invalid && formPhoto.get('caption')?.touched">
+      <small *ngIf="formPhoto.get('caption')?.errors?.required">
+        Caption is required.
+      </small>
+    </div>
+
+    <div>
+      <label>Description</label>
+      <textarea formControlName="description"></textarea>
+    </div>
+
+    <div *ngIf="formPhoto.get('description')?.invalid && formPhoto.get('description')?.touched">
+      <small *ngIf="formPhoto.get('description')?.errors?.required">
+        Description is required.
+      </small>
+    </div>
+
+    <div *ngIf="id <= 0">
+      <input type="file" formControlName="image">
+
+      <div *ngIf="formPhoto.get('image')?.invalid && formPhoto.get('image')?.touched">
+        <small *ngIf="formPhoto.get('image')?.errors?.required">
+          File is required.
+        </small>
+      </div>
+    </div>
+
+    <div>
+      <button type="button" (click)="cancelPhoto()">Cancel</button>
+      <button type="submit" [disabled]="formPhoto.invalid">Save</button>
+    </div>
+  </form>
+</div>
