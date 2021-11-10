@@ -25,7 +25,7 @@ export class AuthService {
       },
       err => {
         console.log(err);
-        alert('Unsucsessful authentification \n'+ err.message);
+        alert('WARNING: Unsucsessful authentification \n'+ err.message);
       }
       );
   }
@@ -36,5 +36,13 @@ export class AuthService {
 
   public isLogIn(): boolean {
     return (localStorage.getItem(this.token_key) !== null);
+  }
+
+  public getToken(): string {
+    let token = localStorage.getItem(this.token_key);
+    if (!token)
+      token = '';
+
+    return  token;
   }
 }
