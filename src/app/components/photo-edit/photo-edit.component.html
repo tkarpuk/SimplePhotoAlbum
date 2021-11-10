@@ -1,41 +1,44 @@
 <p>photo-edit works!</p>
 <div>
   <form [formGroup]="formPhoto" (ngSubmit)="submitPhoto()">
-    <div>
+    <div class="form-group">
       <label>Caption</label>
-      <input type="text" formControlName="caption">
+      <input type="text" formControlName="caption" class="form-control">
     </div>
 
-    <div *ngIf="formPhoto.get('caption')?.invalid && formPhoto.get('caption')?.touched">
+    <div *ngIf="formPhoto.get('caption')?.invalid && formPhoto.get('caption')?.touched"
+    class="alert alert-danger">
       <small *ngIf="formPhoto.get('caption')?.errors?.required">
         Caption is required.
       </small>
     </div>
 
-    <div>
+    <div class="form-group">
       <label>Description</label>
-      <textarea formControlName="description"></textarea>
+      <textarea formControlName="description" class="form-control"></textarea>
     </div>
 
-    <div *ngIf="formPhoto.get('description')?.invalid && formPhoto.get('description')?.touched">
+    <div *ngIf="formPhoto.get('description')?.invalid && formPhoto.get('description')?.touched"
+    class="alert alert-danger">
       <small *ngIf="formPhoto.get('description')?.errors?.required">
         Description is required.
       </small>
     </div>
 
-    <div *ngIf="id <= 0">
-      <input type="file" formControlName="image">
+    <div *ngIf="id <= 0" class="form-group">
+      <input type="file" formControlName="image" class="form-control-file">
 
-      <div *ngIf="formPhoto.get('image')?.invalid && formPhoto.get('image')?.touched">
+      <div *ngIf="formPhoto.get('image')?.invalid && formPhoto.get('image')?.touched"
+      class="alert alert-danger">
         <small *ngIf="formPhoto.get('image')?.errors?.required">
           File is required.
         </small>
       </div>
     </div>
 
-    <div>
-      <button type="button" (click)="cancelPhoto()">Cancel</button>
-      <button type="submit" [disabled]="formPhoto.invalid">Save</button>
+    <div class="form-group">
+      <button type="submit" [disabled]="formPhoto.invalid" class="btn btn-primary">Save</button>&nbsp;&nbsp;
+      <button type="button" (click)="cancelPhoto()" class="btn btn-secondary">Cancel</button>
     </div>
   </form>
 </div>
