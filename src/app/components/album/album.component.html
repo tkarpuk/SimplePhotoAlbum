@@ -3,9 +3,12 @@
   <p>Description: {{ album.description }}</p>
   <p>Photo count: {{photos.length }}</p>
   <div class="form-group">
-    <a routerLink="/photo/0" class="btn btn-success" role="button">Add new photo in this album</a>&nbsp;&nbsp;
+    <a routerLink="/photo/0" class="btn btn-primary" role="button">Add new photo in this album</a>&nbsp;&nbsp;
   </div>
 </div>
+
+<p>Default pagination:</p>
+<ngb-pagination [collectionSize]="pageCount" [(page)]="page" aria-label="Default pagination" (pageChange)="onPageChange($event)"></ngb-pagination>
 
 <div *ngFor="let photo of photos">
   <app-photo [photoId]="photo.id"></app-photo>

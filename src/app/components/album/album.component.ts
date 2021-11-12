@@ -10,6 +10,9 @@ import { PhotoService } from 'src/app/services/photo.service';
   styleUrls: ['./album.component.css']
 })
 export class AlbumComponent implements OnInit {
+  page = 1;
+  pageCount = 1;
+
   album: Album = {
     id: 1,
     caption: 'First Album',
@@ -22,12 +25,28 @@ export class AlbumComponent implements OnInit {
     private config: ConfigureService) { }
 
   ngOnInit(): void {
-    this.getPhotos(this.config.pageLimit, 1);
+    this.getPageCount();
+    this.loadData();
   }
 
   private getPhotos(pageSize: number, pageN: number) {
     this.photoService.getAllPhotos(pageSize, pageN)
     .subscribe(data => this.photos = data,
       error => alert(error.message));
+  }
+
+  private loadData() {
+    this.getPhotos(this.config.pageLimit, this.page);
+  }
+
+  onPageChange(event: any) {
+    this.page = event;
+    this.loadData();
+  }
+
+  private getPageCount() {
+    this.photoService.getCountPhotos()
+    .subscribe(data => {this.pageCount = data;},
+      error => console.log(error.message));
   }
 }

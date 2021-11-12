@@ -18,6 +18,10 @@ export class PhotoService {
     return this.http.get<Photo[]>(`${this.config.baseUrl}photos`, { params: { pageSize, pageN}});
   }
 
+  getCountPhotos(): Observable<number> {
+    return this.http.get<number>(`${this.config.baseUrl}photos/count`);
+  }
+
   getPhotoById(id: number): Observable<Photo>{
     return this.http.get<Photo>(`${this.config.baseUrl}photos/${id}`);
   }

@@ -2,8 +2,8 @@
 <p>{{photo.caption}}</p>
 <div>
   <div class="form-group">
-    <a routerLink="/photo/{{photo.id}}" class="btn btn-success" role="button">Edit photo's data</a>&nbsp;&nbsp;
-    <button type="button" (click)="deletePhoto()" class="btn btn-secondary">Delete photo</button>
+    <a routerLink="/photo/{{photo.id}}" class="btn btn-primary" role="button">Edit photo's data</a>&nbsp;&nbsp;
+    <button type="button" (click)="deletePhoto()" class="btn btn-danger">Delete photo</button>
   </div>
 </div>
 <img id="myimage" [src]="thumbnail" />
