@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class ConfigureService {
   token_key: string = 'auth-token';
-  baseUrl: string = 'http:\\unknown.com';
+  baseUrl: string = 'https://localhost:44337/api/';
   pageLimit: number = 10;
 
 

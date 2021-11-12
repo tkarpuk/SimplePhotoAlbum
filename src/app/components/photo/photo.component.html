@@ -1,2 +1,12 @@
-<p>photo works!</p>
-{{photoId}}
+<hr>
+<p>{{photo.caption}}</p>
+<div>
+  <div class="form-group">
+    <a routerLink="/photo/{{photo.id}}" class="btn btn-success" role="button">Edit photo's data</a>&nbsp;&nbsp;
+    <button type="button" (click)="deletePhoto()" class="btn btn-secondary">Delete photo</button>
+  </div>
+</div>
+<img id="myimage" [src]="thumbnail" />
+<br><br>
+<p>{{photo.description}}</p>
+<hr>

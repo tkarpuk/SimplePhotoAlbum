@@ -1,7 +1,10 @@
-<p>album works!</p>
 <div>
   <h3>Album: {{ album.caption | uppercase }}</h3>
   <p>Description: {{ album.description }}</p>
+  <p>Photo count: {{photos.length }}</p>
+  <div class="form-group">
+    <a routerLink="/photo/0" class="btn btn-success" role="button">Add new photo in this album</a>&nbsp;&nbsp;
+  </div>
 </div>
 
 <div *ngFor="let photo of photos">

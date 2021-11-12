@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ConfigureService } from './configure.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,10 @@ export class AuthService {
       token = '';
 
     return  token;
+  }
+
+  public TryTest() {
+    // TODO: remove after testing
+    return this.http.get(this.baseUrl + 'Test', {responseType: 'text'});
   }
 }

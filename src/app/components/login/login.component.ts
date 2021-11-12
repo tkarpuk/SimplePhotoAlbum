@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
+  testTime: string = 'test is BAD!'; // TODO: remove after testing
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     this.createLoginForm();
+
+    this.tryTest();
+  }
+
+  tryTest(): void { // TODO: remove after testing
+    this.authService.TryTest().subscribe(data => {this.testTime = data;});
   }
 
   createLoginForm() {
