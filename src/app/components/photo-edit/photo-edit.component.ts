@@ -85,7 +85,7 @@ export class PhotoEditComponent implements OnInit {
 
   updatePhoto() {
     this.photoService.updatePhoto(this.id, this.photo)
-    .subscribe(data => {},
+    .subscribe(data => { this.router.navigateByUrl('/album'); },
       error => { console.log(error.message); alert(error.message)});
   }
 

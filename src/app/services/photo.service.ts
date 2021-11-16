@@ -31,8 +31,7 @@ export class PhotoService {
   }
 
   updatePhoto(id: number, photo: Photo): Observable<any> {
-    return this.http.put<any>(`${this.config.baseUrl}photos/${id}`,
-    {id, "photoInfo": photo});
+    return this.http.put<any>(`${this.config.baseUrl}photos/${id}`, photo);
   }
 
   deletePhoto(id: number) : Observable<any> {
@@ -42,7 +41,10 @@ export class PhotoService {
   createPhoto(photo: Photo, file: File): Observable<any> {
     const formData = new FormData();
     formData.append("file", file, file.name);
-    formData.append("photoInfo", JSON.stringify(photo));
+
+    //formData.append("photoInfo", JSON.stringify(photo));
+    formData.append("caption", photo.caption);
+    formData.append("description", photo.description);
 
     return this.http.post<any>(`${this.config.baseUrl}photos`, formData);
   }
