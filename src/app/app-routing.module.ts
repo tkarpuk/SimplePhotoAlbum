@@ -3,12 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { AlbumComponent } from './components/album/album.component';
 import { LoginComponent } from './components/login/login.component';
 import { PhotoEditComponent } from './components/photo-edit/photo-edit.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 const routes: Routes = [
-  { path: '', component: AlbumComponent },
-  { path: 'album', component: AlbumComponent },
+  { path: '', component: AlbumComponent, canActivate: [AuthGuardService ] },
+  { path: 'album', component: AlbumComponent, canActivate: [AuthGuardService] },
   { path: 'login', component: LoginComponent },
-  { path: 'photo/:id', component: PhotoEditComponent },
+  { path: 'photo/:id', component: PhotoEditComponent, canActivate: [AuthGuardService]},
   { path: '**', redirectTo: 'album' }
 ];
 

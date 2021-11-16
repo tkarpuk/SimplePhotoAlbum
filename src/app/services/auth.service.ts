@@ -19,10 +19,10 @@ export class AuthService {
   }
 
   public login(email: string, password: string): void {
-     this.http.post(`${this.baseUrl}/login`, {email, password})
+     this.http.post(`${this.baseUrl}Auth`, {}, { params: {email, password}})
      .subscribe(
        (data:any) => {
-       localStorage.setItem(this.token_key, data.token)
+       localStorage.setItem(this.token_key, data.Token);
       },
       err => {
         console.log(err);
@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   public isLogIn(): boolean {
-    return (localStorage.getItem(this.token_key) !== null);
+    return this.getToken() !== '';
   }
 
   public getToken(): string {

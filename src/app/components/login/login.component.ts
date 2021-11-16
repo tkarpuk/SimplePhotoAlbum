@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
   testTime: string = 'test is BAD!'; // TODO: remove after testing
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
   createLoginForm() {
     this.formLogin = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required, Validators.minLength(3)]) // TODO: minlength from settins
+      password: new FormControl('', [Validators.required, Validators.minLength(1)])
     });
   }
 
@@ -34,9 +36,8 @@ export class LoginComponent implements OnInit {
     const email = this.formLogin.value['email'];
     const password = this.formLogin.value['password'];
 
-    // TODO: implements Auth service
-    //console.log(email, password);
-
-    this.formLogin.reset();
+    this.authService.login(email, password);
+//    this.formLogin.reset();
+    this.router.navigateByUrl('/album');
   }
 }
