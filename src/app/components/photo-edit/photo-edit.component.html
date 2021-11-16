@@ -1,4 +1,12 @@
-<p>photo-edit works!</p>
+<div *ngIf="(id <= 0); else captionEdit">
+  <h4>Add new photo into album</h4>
+</div>
+<ng-template #captionEdit>
+  <div>
+  <h4>Edit photo information</h4>
+</div>
+</ng-template>
+
 <div>
   <form [formGroup]="formPhoto" (ngSubmit)="submitPhoto()">
     <div class="form-group">

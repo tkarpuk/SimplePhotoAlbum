@@ -10,7 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginComponent implements OnInit {
   formLogin!: FormGroup;
-  testTime: string = 'test is BAD!'; // TODO: remove after testing
+  testTime: string = 'Can not connect to the server!';
 
   constructor(private authService: AuthService,
     private router: Router) {}
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.tryTest();
   }
 
-  tryTest(): void { // TODO: remove after testing
+  tryTest(): void {
     this.authService.TryTest().subscribe(data => {this.testTime = data;});
   }
 
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
     const password = this.formLogin.value['password'];
 
     this.authService.login(email, password);
-//    this.formLogin.reset();
+    this.formLogin.reset();
     this.router.navigateByUrl('/album');
   }
 }
