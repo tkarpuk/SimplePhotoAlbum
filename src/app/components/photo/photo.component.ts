@@ -41,7 +41,7 @@ export class PhotoComponent implements OnInit {
   deletePhoto() {
     if (confirm('Are you sure you want to delete this photo')) {
       this.photoService.deletePhoto(this.photoId)
-      .subscribe(data => {},
+      .subscribe(data => { window.location.reload(); },
         error => { console.log(error.message); alert(error.message)}
         );
     }
