@@ -91,7 +91,7 @@ export class PhotoEditComponent implements OnInit {
 
   createPhoto() {
     this.photoService.createPhoto(this.photo, this.file)
-    .subscribe(data => {},
+    .subscribe(data => { this.router.navigateByUrl('/album'); },
       error => { console.log(error.message); alert(error.message); }
     )
   }
